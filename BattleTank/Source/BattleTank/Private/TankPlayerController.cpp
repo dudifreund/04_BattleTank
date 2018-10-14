@@ -1,5 +1,6 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
+#include "Tank.h"
 #include "TankPlayerController.h"
 
 void ATankPlayerController::BeginPlay()
@@ -53,10 +54,30 @@ bool ATankPlayerController::GetSightRayHitLocation(FVector& HitLocation) const
 	if (GetLookDirection(ScreenLocation, LookDirection))
 	{
 		// Line-trace along that LookDirection, and see what we hit (up to max range)
-		GetLookVectorHitLocation(LookDirection, HitLocation);
+		if(GetLookVectorHitLocation(LookDirection, HitLocation))
+		{
+			return true;
+		}
+		return false;		
 	}
-	return true;
+	return false;
 }
+
+
+
+
+//if (GetLookDirection(CrosshairLocation, LookDirection))
+//{
+	//GetLookDirectionTraceHit(LookDirection, HitLocation);
+	//return true;
+//}
+//return false;
+//}
+
+
+
+
+
 
 bool ATankPlayerController::GetLookVectorHitLocation(FVector LookDirection, FVector& HitLocation) const
 {
@@ -74,7 +95,7 @@ bool ATankPlayerController::GetLookVectorHitLocation(FVector LookDirection, FVec
 		return true;
 	}
 	else
-	{
+	{	
 		HitLocation = FVector(0);
 		return false; // Line Trace didn't succeed
 	}
