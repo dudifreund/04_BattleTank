@@ -30,11 +30,13 @@ public:
 	void Fire();
 
 protected:
-	UTankAimingComponent * TankAimingComponent = nullptr;
+	
 
 private:
 	// Sets default values for this pawn's properties
 	ATank();
+
+	UTankAimingComponent * TankAimingComponent = nullptr;
 
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
