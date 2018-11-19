@@ -32,6 +32,8 @@ protected:
 	UTankMovementComponent * TankMovementComponent = nullptr;
 
 private:
+	virtual void BeginPlay() override;
+	
 	// Sets default values for this pawn's properties
 	ATank();
 	
