@@ -3,6 +3,7 @@
 #include "TankAIController.h"
 #include "TankAimingComponent.h"
 #include "Tank.h" // So we can implement OnDeath
+#include "Runtime/Engine/Classes/GameFramework/Pawn.h"
 // Depends on movement component via pathfinding system
 
 void ATankAIController::BeginPlay()
@@ -28,7 +29,8 @@ void ATankAIController::SetPawn(APawn* InPawn)
 
 void ATankAIController::OnPossesedTankDeath()
 {
-	UE_LOG(LogTemp, Warning, TEXT("Received!"))
+	if (!ensure(GetPawn())) { return; } // TODO remove if ok
+	GetPawn()->DetachFromControllerPendingDestroy();
 }
 
 // Called every frame
