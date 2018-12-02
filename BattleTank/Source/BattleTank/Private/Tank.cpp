@@ -4,6 +4,11 @@
 #include "Runtime/Engine/Classes/Kismet/GameplayStatics.h"
 
 
+float ATank::GetHealthPercent() const
+{
+	return (float)CurrentHealth / (float)StartingHealth;
+}
+
 // Sets default values
 ATank::ATank()
 {
