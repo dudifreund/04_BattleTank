@@ -13,9 +13,6 @@ void ATankPlayerController::SetPawn(APawn* InPawn)
 		auto PossesedTank = Cast<ATank>(InPawn);
 		if (!ensure(PossesedTank)) { return; }
 
-		UE_LOG(LogTemp, Warning, TEXT("2"));
-
-
 		// Subscribe our local method to the tank's death event
 		PossesedTank->OnDeath.AddUniqueDynamic(this, &ATankPlayerController::OnPossesedTankDeath);
 	}
@@ -23,7 +20,6 @@ void ATankPlayerController::SetPawn(APawn* InPawn)
 
 void ATankPlayerController::OnPossesedTankDeath()
 {
-	UE_LOG(LogTemp, Warning, TEXT("Received2!"))
 	StartSpectatingOnly();
 }
 
